@@ -21,12 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
         <activity
             android:name=".LongPress"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
             android:showOnLockScreen="true"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"> <!-- allows us to start and finish an activity without being seen on the screen -->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"> &lt;!&ndash; allows us to start and finish an activity without being seen on the screen &ndash;&gt;
             <intent-filter android:priority="2147483647">
                 <action android:name="android.speech.action.WEB_SEARCH" />
 
@@ -44,14 +45,14 @@
             </intent-filter>
         </activity>
 
-        <!-- receiver for plugging/removing the button -->
+        &lt;!&ndash; receiver for plugging/removing the button &ndash;&gt;
         <receiver android:name=".HeadsetReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.HEADSET_PLUG" />
             </intent-filter>
         </receiver>
 
-        <!-- receiver for the actual button -->
+        &lt;!&ndash; receiver for the actual button &ndash;&gt;
         <receiver
             android:name=".ExternalAudioButtonReceiver"
             android:enabled="true">
@@ -59,6 +60,7 @@
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
+        -->
 
         <service
             android:name=".BarnacleService"
@@ -73,7 +75,26 @@
                 <action android:name="android.intent.action.SCREEN_OFF" />
             </intent-filter>
         </receiver>
+        //Up receiver
+        <receiver android:name=".UpReceiver">
 
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED">
+                </action>
+            </intent-filter>
+            -->
+            <intent-filter>
+                <action android:name="com.adriangradinar.barnacle.UpReceiver"></action>
+            </intent-filter>
+        </receiver>
+        //material camera
+        <activity
+            android:name="com.afollestad.materialcamera.CaptureActivity"
+            android:theme="@style/MaterialCamera.CaptureActivity" />
+        <activity
+            android:name="com.afollestad.materialcamera.CaptureActivity2"
+            android:theme="@style/MaterialCamera.CaptureActivity" />
         <activity
             android:name=".HiddenPhoto"
             android:excludeFromRecents="true"
@@ -84,7 +105,12 @@
         <service
             android:name=".CameraService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity
+            android:name=".MatCamActivity"
+            android:label="@string/title_activity_mat_cam"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

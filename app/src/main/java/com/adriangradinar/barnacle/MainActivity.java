@@ -28,3 +28,6 @@ public class MainActivity extends AppCompatActivity {
         startService(new Intent(this, BarnacleService.class));
     }
 }
+
+
+
